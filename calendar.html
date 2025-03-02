@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Календарь заданий</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <header>
+        <h1>📅 Выбери день челленджа</h1>
+        <a href="index.html" class="back-btn">🔙 На главную</a>
+    </header>
+    <main>
+        <div class="calendar">
+            <script>
+                for (let i = 1; i <= 30; i++) {
+                    document.write(`
+                        <a href="day.html?day=${i}" class="day-card" id="day-${i}">
+                            День ${i}
+                        </a>
+                    `);
+                }
+            </script>
+        </div>
+    </main>
+</body>
+</html>
