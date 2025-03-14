@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задания</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <header>
+        <h1 id="task-title"></h1>
+        <a href="calendar.html" class="back-btn">🔙 Назад</a>
+    </header>
+    <main>
+        <section id="test-section" style="display: none;">
+            <h2>📝 Тесты</h2>
+            <ul id="test-answers"></ul>
+            <p id="test-result"></p>
+        </section>
+
+        <section id="fill-gap-section" style="display: none;">
+            <h2>✍ Вставьте слово</h2>
+            <p id="gap-sentence"></p>
+            <input type="text" id="user-answer" placeholder="Введите ответ">
+            <button onclick="checkGapAnswer()">Проверить</button>
+            <p id="gap-result"></p>
+        </section>
+
+        <section id="long-answer-section" style="display: none;">
+            <h2>📜 Развернутое задание</h2>
+            <p id="long-question"></p>
+            <textarea id="long-answer" placeholder="Напишите ответ здесь"></textarea>
+            <button onclick="saveLongAnswer()">Сохранить</button>
+            <p id="long-result"></p>
+        </section>
+
+        <!-- Одна кнопка для завершения дня -->
+        <button onclick="markCompleted()">✅ Выполнено</button>
+    </main>
+</body>
+</html>
