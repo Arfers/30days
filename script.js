@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const data = {
         1: {
-            title: "День 1: Приветствие",
+            title: "День 1: Начало",
             vocabulary: ["Hallo - Привет", "Tschüss - Пока", "Guten Tag - Добрый день"],
             grammar: "Глагол 'sein': ich bin, du bist, er/sie/es ist...",
             audio: "audio/day1.mp3",
@@ -14,10 +14,10 @@ document.addEventListener("DOMContentLoaded", () => {
             ]
         },
         2: {
-            title: "День 2: Приветствие",
-            vocabulary: ["scheiße - дерьмо"],
-            grammar: "Глагол '12312321': ich bin, du bist, er/sie/es ist...",
-            audio: "audio/day1.mp3",
+            title: "День 2: Гучи",
+            vocabulary: ["выеб города и заработал много денег"],
+            grammar: "ныне мою жопу возит новый мерин",
+            audio: "audio/day2.mp3",
             tests: [
                 { question: "Какой артикль у слова 'Hund'?", answers: ["der", "die", "das"], correct: 0 },
                 { question: "лол'?", answers: ["der", "die", "das"], correct: 2 }
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
             title: "День 2: Приветствие",
             vocabulary: ["scheiße - дерьмо"],
             grammar: "Глагол '12312321': ich bin, du bist, er/sie/es ist...",
-            audio: "audio/day1.mp3",
+            audio: "audio/day2.mp3",
             tests: [
                 { question: "Какой артикль у слова 'Hund'?", answers: ["der", "die", "das"], correct: 0 },
                 { question: "лол'?", answers: ["der", "die", "das"], correct: 2 }
@@ -148,6 +148,10 @@ document.addEventListener("DOMContentLoaded", () => {
             vocabulary: ["привет"],
             grammar: "Глагол '12312321': ich bin, du bist, er/sie/es ist...",
             audio: "audio/day1.mp3",
+            fillGap: {
+                sentence: "Ich ___ ein Buch.",
+                correct: "habe"
+            },     
             tests: [
                 { question: "Какой артикль у слова 'Hund'?", answers: ["der", "die", "das"], correct: 0 },
                 { question: "лол'?", answers: ["der", "die", "das"], correct: 2 }
@@ -318,10 +322,7 @@ document.addEventListener("DOMContentLoaded", () => {
             vocabulary: ["слова"],
             grammar: "грамматика",
             audio: "audio/day30.mp3",
-            tests: [
-                { question: "Какой артикль у слова 'Hund'?", answers: ["der", "die", "das"], correct: 0 },
-                { question: "лол'?", answers: ["der", "die", "das"], correct: 2 }
-            ]
+            longanswer: "Напишите мотивационное письмо в вуз на немецком языке. Объем 300 слов."
         }
     };
 
@@ -337,11 +338,13 @@ document.addEventListener("DOMContentLoaded", () => {
         } else if (page === "tasks") {
             document.getElementById("task-title").textContent = dayData.title;
             if (dayData.tests) showTests(dayData.tests);
+            if (dayData.fillGap) showFillGap(dayData.fillGap);
+            if (dayData.longAnswer) showLongAnswer(dayData.longAnswer);
         }
     }
 });
 
-// **Функция отображения тестов**
+// функция отображения тестов
 function showTests(testArray) {
     document.getElementById("test-section").style.display = "block";
     const testContainer = document.getElementById("test-answers");
@@ -363,7 +366,7 @@ function showTests(testArray) {
         testContainer.appendChild(testBlock);
     });
 
-    // Добавляем кнопку "Проверить" после загрузки тестов
+    // кнопка "проверить"
     const checkButton = document.createElement("button");
     checkButton.textContent = "Проверить";
     checkButton.classList.add("check-btn");
@@ -371,7 +374,7 @@ function showTests(testArray) {
     document.getElementById("test-section").appendChild(checkButton);
 }
 
-// **Функция проверки тестов**
+// проверка тестов
 function checkAnswers(testArray) {
     let correctCount = 0;
     testArray.forEach((test, index) => {
@@ -385,7 +388,7 @@ function checkAnswers(testArray) {
     resultElement.textContent = `✅ Вы правильно ответили на ${correctCount} из ${testArray.length} вопросов!`;
 }
 
-    function markCompleted() {  // ❌ Функция внутри функции! 
+    function markCompleted() {  // негр
         const params = new URLSearchParams(window.location.search);
         const day = params.get("day");
         if (!day) {
@@ -396,3 +399,20 @@ function checkAnswers(testArray) {
         alert(`✅ День ${day} завершен!`);
         window.location.href = "calendar.html";
 }
+
+        function showFillGap(gapData) {
+            document.getElementById("fill-gap-section").style.display = "block";
+            document.getElementById("gap-sentence").textContent = gapData.sentence;
+            window.correctGapAnswer = gapData.correct.toLowerCase();
+        }
+        
+        function checkGapAnswer() {
+            const userInput = document.getElementById("user-answer").value.trim().toLowerCase();
+            if (userInput === window.correctGapAnswer) {
+                document.getElementById("gap-result").textContent = "✅ Верно!";
+                document.getElementById("gap-result").style.color = "green";
+            } else {
+                document.getElementById("gap-result").textContent = "❌ Ошибка. Попробуй ещё раз.";
+                document.getElementById("gap-result").style.color = "red";
+            }
+        }
