@@ -322,7 +322,7 @@ document.addEventListener("DOMContentLoaded", () => {
             vocabulary: ["слова"],
             grammar: "грамматика",
             audio: "audio/day30.mp3",
-            longanswer: "Напишите мотивационное письмо в вуз на немецком языке. Объем 300 слов."
+            longAnswer: "Напишите мотивационное письмо в вуз на немецком языке. Объем 300 слов."
         }
     };
 
@@ -416,3 +416,71 @@ function checkAnswers(testArray) {
                 document.getElementById("gap-result").style.color = "red";
             }
         }
+
+            function showLongAnswer(longText) {
+                document.getElementById("long-answer-section").style.display = "block";
+                document.getElementById("long-question").textContent = longText;
+            }
+            
+            function saveLongAnswer() {
+                const answer = document.getElementById("long-answer").value.trim();
+                if (answer.length > 50) {
+                    document.getElementById("long-result").textContent = "✅ Ответ сохранён!";
+                } else {
+                    document.getElementById("long-result").textContent = "❌ Напишите развернутый ответ.";
+                }
+            }
+            document.addEventListener("DOMContentLoaded", () => {
+                if (window.location.pathname.includes("calendar.html")) {
+                    updateCalendar();
+                }
+            });
+            
+            function updateCalendar() {
+                console.log("🔄 Обновление календаря...");
+                for (let i = 1; i <= 30; i++) {
+                    if (localStorage.getItem(`day-${i}`) === "completed") {
+                        const dayCard = document.getElementById(`day-${i}`);
+                        if (dayCard) {
+                            dayCard.style.backgroundColor = "#28a745";
+                            dayCard.style.color = "white";
+                            console.log(`✅ День ${i} отмечен как выполненный`);
+                        } else {
+                            console.log(`⚠️ Элемент day-${i} не найден в DOM`);
+                        }
+                    }
+                }
+            }
+            
+            // **Функция проверки, можно ли перейти к дню**
+            function checkDay(day) {
+                if (day > 1) {
+                    const prevDayCompleted = localStorage.getItem(`day-${day - 1}`) === "completed";
+            
+                    if (!prevDayCompleted) {
+                        const proceed = confirm(`⚠️ Рекомендуем сначала завершить День ${day - 1}. Хотите продолжить?`);
+                        if (!proceed) {
+                            return; // ❌ Остаёмся в календаре
+                        }
+                    }
+                }
+                // ✅ Разрешаем переход к дню
+                window.location.href = `day.html?day=${day}`;
+            }
+            
+            function markCompleted() {
+                const params = new URLSearchParams(window.location.search);
+                const day = params.get("day");
+            
+                if (!day) {
+                    alert("❌ Ошибка: День не определён!");
+                    return;
+                }
+            
+                localStorage.setItem(`day-${day}`, "completed");
+                alert(`✅ День ${day} завершен!`);
+                
+                window.location.href = "calendar.html";
+                setTimeout(updateCalendar, 1000);
+            }
+            

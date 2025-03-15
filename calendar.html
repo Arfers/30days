@@ -16,14 +16,10 @@
         <div class="calendar">
             <script>
                 for (let i = 1; i <= 30; i++) {
-                    document.write(`
-                        <a href="day.html?day=${i}" class="day-card" id="day-${i}">
-                            День ${i}
-                        </a>
-                    `);
+                    document.write(`<a href="day.html?day=${i}" class="day-card" id="day-${i}" onclick="checkDay(${i}); return false;">День ${i}</a>`);
                 }
             </script>
-        </div>
+        </div>        
     </main>
 </body>
 </html>
