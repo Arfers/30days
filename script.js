@@ -4,346 +4,57 @@ document.addEventListener("DOMContentLoaded", () => {
     const page = window.location.pathname.includes("tasks") ? "tasks" : "theory";
     const globalParams = new URLSearchParams(window.location.search);
     const lang = globalParams.get("lang") || "de";
+    const taskLink = document.getElementById("task-link");
+    if (taskLink) {
+      taskLink.href = `tasks.html?day=${day}&lang=${lang}`;
+    }
     const backLink = document.getElementById("back-link");
 if (backLink) {
     backLink.href = `calendar.html?lang=${lang}`;
 }
 
-
-
-    const data = {
+const data = {
+    de: {
         1: {
-            title: "День 1: Приветствие и знакомство",
-            vocabulary: ["ich/du - я/ты", "er/sie/es - он/она/оно", "Sie/Ihnen - Вы/Вас", "Wer/was/wo? - Кто/что/где?", "Hallo - Привет", "Guten Tag - Добрый день!", "Ich heiße.. - Меня зовут..", "Woher kommst du? - Откуда ты?", "Ich komme aus.. - Я родом из..."],
-            grammar: "Глагол sein - являться: ich bin, du bist, er/sie/es ist...",
-            audio: "audio/day1.mp3",
-            tests: [
+          title: "День 1. Знакомство с вузом",
+          vocabulary: ["Universität", "Bewerbung"],
+          grammar: "Глагол sein",
+          audio: "audio/day1_de.mp3",
+          tests: [
                 { question: "Какой артикль у слова 'Universiфtät'?", answers: ["der", "die", "das"], correct: 1 },
                 { question: "Какой артикль у слова 'Uniвversität'?", answers: ["der", "die", "das"], correct: 1 },
                 { question: "Какой артикль у слова 'Univпersität'?", answers: ["der", "die", "das"], correct: 1 }
-            ]
-        },
-        2: {
-            title: "День 2: Гучи",
-            vocabulary: ["выеб города и заработал много денег"],
-            grammar: "ныне мою жопу возит новый мерин",
-            audio: "audio/day2.mp3",
-            tests: [
-                { question: "Какой артикль у слова 'Hund'?", answers: ["der", "die", "das"], correct: 0 },
-                { question: "лол'?", answers: ["der", "die", "das"], correct: 2 },
-                { question: "Какой артикль у слова 'Hund'?", answers: ["der", "die", "das"], correct: 0 },
-                { question: "лол'?", answers: ["der", "die", "das"], correct: 2 }
-            ]
-        },
-        3: {
-            title: "День 2: Приветствие",
-            vocabulary: ["scheiße - дерьмо"],
-            grammar: "Глагол '12312321': ich bin, du bist, er/sie/es ist...",
-            audio: "audio/day2.mp3",
-            tests: [
-                { question: "Какой артикль у слова 'Hund'?", answers: ["der", "die", "das"], correct: 0 },
-                { question: "лол'?", answers: ["der", "die", "das"], correct: 2 }
-            ]
-        },
-        4: {
-            title: "День 2: Приветствие",
-            vocabulary: ["scheiße - дерьмо"],
-            grammar: "Глагол '12312321': ich bin, du bist, er/sie/es ist...",
-            audio: "audio/day1.mp3",
-            tests: [
-                { question: "Какой артикль у слова 'Hund'?", answers: ["der", "die", "das"], correct: 0 },
-                { question: "лол'?", answers: ["der", "die", "das"], correct: 2 }
-            ]
-        },
-        5: {
-            title: "День 2: Приветствие",
-            vocabulary: ["scheiße - дерьмо"],
-            grammar: "Глагол '12312321': ich bin, du bist, er/sie/es ist...",
-            audio: "audio/day1.mp3",
-            tests: [
-                { question: "Какой артикль у слова 'Hund'?", answers: ["der", "die", "das"], correct: 0 },
-                { question: "лол'?", answers: ["der", "die", "das"], correct: 2 }
-            ]
-        },
-        6: {
-            title: "День 6: Приветствие",
-            vocabulary: ["привет"],
-            grammar: "Глагол '12312321': ich bin, du bist, er/sie/es ist...",
-            audio: "audio/day1.mp3",
-            tests: [
-                { question: "Какой артикль у слова 'Hund'?", answers: ["der", "die", "das"], correct: 0 },
-                { question: "лол'?", answers: ["der", "die", "das"], correct: 2 }
-            ]
-        },
-        7: {
-            title: "День 6: Приветствие",
-            vocabulary: ["привет"],
-            grammar: "Глагол '12312321': ich bin, du bist, er/sie/es ist...",
-            audio: "audio/day1.mp3",
-            tests: [
-                { question: "Какой артикль у слова 'Hund'?", answers: ["der", "die", "das"], correct: 0 },
-                { question: "лол'?", answers: ["der", "die", "das"], correct: 2 }
-            ]
-        },
-        8: {
-            title: "День 6: Приветствие",
-            vocabulary: ["привет"],
-            grammar: "Глагол '12312321': ich bin, du bist, er/sie/es ist...",
-            audio: "audio/day1.mp3",
-            tests: [
-                { question: "Какой артикль у слова 'Hund'?", answers: ["der", "die", "das"], correct: 0 },
-                { question: "лол'?", answers: ["der", "die", "das"], correct: 2 }
-            ]
-        },
-        9: {
-            title: "День 6: Приветствие",
-            vocabulary: ["привет"],
-            grammar: "Глагол '12312321': ich bin, du bist, er/sie/es ist...",
-            audio: "audio/day1.mp3",
-            tests: [
-                { question: "Какой артикль у слова 'Hund'?", answers: ["der", "die", "das"], correct: 0 },
-                { question: "лол'?", answers: ["der", "die", "das"], correct: 2 }
-            ]
-        },
-        10: {
-            title: "День 6: Приветствие",
-            vocabulary: ["привет"],
-            grammar: "Глагол '12312321': ich bin, du bist, er/sie/es ist...",
-            audio: "audio/day1.mp3",
-            tests: [
-                { question: "Какой артикль у слова 'Hund'?", answers: ["der", "die", "das"], correct: 0 },
-                { question: "лол'?", answers: ["der", "die", "das"], correct: 2 }
-            ]
-        },
-        11: {
-            title: "День 6: Приветствие",
-            vocabulary: ["привет"],
-            grammar: "Глагол '12312321': ich bin, du bist, er/sie/es ist...",
-            audio: "audio/day1.mp3",
-            tests: [
-                { question: "Какой артикль у слова 'Hund'?", answers: ["der", "die", "das"], correct: 0 },
-                { question: "лол'?", answers: ["der", "die", "das"], correct: 2 }
-            ]
-        },
-        12: {
-            title: "День 6: Приветствие",
-            vocabulary: ["привет"],
-            grammar: "Глагол '12312321': ich bin, du bist, er/sie/es ist...",
-            audio: "audio/day1.mp3",
-            tests: [
-                { question: "Какой артикль у слова 'Hund'?", answers: ["der", "die", "das"], correct: 0 },
-                { question: "лол'?", answers: ["der", "die", "das"], correct: 2 }
-            ]
-        },
-        13: {
-            title: "День 6: Приветствие",
-            vocabulary: ["привет"],
-            grammar: "Глагол '12312321': ich bin, du bist, er/sie/es ist...",
-            audio: "audio/day1.mp3",
-            tests: [
-                { question: "Какой артикль у слова 'Hund'?", answers: ["der", "die", "das"], correct: 0 },
-                { question: "лол'?", answers: ["der", "die", "das"], correct: 2 }
-            ]
-        },
-        14: {
-            title: "День 6: Приветствие",
-            vocabulary: ["привет"],
-            grammar: "Глагол '12312321': ich bin, du bist, er/sie/es ist...",
-            audio: "audio/day1.mp3",
-            fillGap: {
-                sentence: "Ich ___ ein Buch.",
-                correct: "habe"
-            },
-            longAnswer: "Напишите 100-150 слов о вашем учебном дне.",
-            tests: [
-                { question: "Какой артикль у слова 'Hund'?", answers: ["der", "die", "das"], correct: 0 },
-                { question: "лол'?", answers: ["der", "die", "das"], correct: 2 }
-            ]
-        },
-        15: {
-            title: "День 6: Приветствие",
-            vocabulary: ["привет"],
-            grammar: "Глагол '12312321': ich bin, du bist, er/sie/es ist...",
-            audio: "audio/day1.mp3",
-            fillGap: {
-                sentence: "Ich ___ ein Buch.",
-                correct: "habe"
-            },     
-            tests: [
-                { question: "Какой артикль у слова 'Hund'?", answers: ["der", "die", "das"], correct: 0 },
-                { question: "лол'?", answers: ["der", "die", "das"], correct: 2 }
-            ]
-        },
-        16: {
-            title: "День 6: Приветствие",
-            vocabulary: ["привет"],
-            grammar: "Глагол '12312321': ich bin, du bist, er/sie/es ist...",
-            audio: "audio/day1.mp3",
-            tests: [
-                { question: "Какой артикль у слова 'Hund'?", answers: ["der", "die", "das"], correct: 0 },
-                { question: "лол'?", answers: ["der", "die", "das"], correct: 2 }
-            ]
-        },
-        17: {
-            title: "День 6: Приветствие",
-            vocabulary: ["привет"],
-            grammar: "Глагол '12312321': ich bin, du bist, er/sie/es ist...",
-            audio: "audio/day1.mp3",
-            tests: [
-                { question: "Какой артикль у слова 'Hund'?", answers: ["der", "die", "das"], correct: 0 },
-                { question: "лол'?", answers: ["der", "die", "das"], correct: 2 }
-            ]
-        },
-        18: {
-            title: "День 6: Приветствие",
-            vocabulary: ["привет"],
-            grammar: "Глагол '12312321': ich bin, du bist, er/sie/es ist...",
-            audio: "audio/day1.mp3",
-            tests: [
-                { question: "Какой артикль у слова 'Hund'?", answers: ["der", "die", "das"], correct: 0 },
-                { question: "лол'?", answers: ["der", "die", "das"], correct: 2 }
-            ]
-        },
-        19: {
-            title: "День 6: Приветствие",
-            vocabulary: ["привет"],
-            grammar: "Глагол '12312321': ich bin, du bist, er/sie/es ist...",
-            audio: "audio/day1.mp3",
-            tests: [
-                { question: "Какой артикль у слова 'Hund'?", answers: ["der", "die", "das"], correct: 0 },
-                { question: "лол'?", answers: ["der", "die", "das"], correct: 2 }
-            ]
-        },
-        20: {
-            title: "День 6: Приветствие",
-            vocabulary: ["привет"],
-            grammar: "Глагол '12312321': ich bin, du bist, er/sie/es ist...",
-            audio: "audio/day1.mp3",
-            tests: [
-                { question: "Какой артикль у слова 'Hund'?", answers: ["der", "die", "das"], correct: 0 },
-                { question: "лол'?", answers: ["der", "die", "das"], correct: 2 }
-            ]
-        },
-        21: {
-            title: "День 6: Приветствие",
-            vocabulary: ["привет"],
-            grammar: "Глагол '12312321': ich bin, du bist, er/sie/es ist...",
-            audio: "audio/day1.mp3",
-            tests: [
-                { question: "Какой артикль у слова 'Hund'?", answers: ["der", "die", "das"], correct: 0 },
-                { question: "лол'?", answers: ["der", "die", "das"], correct: 2 }
-            ]
-        },
-        21: {
-            title: "День 6: Приветствие",
-            vocabulary: ["привет"],
-            grammar: "Глагол '12312321': ich bin, du bist, er/sie/es ist...",
-            audio: "audio/day1.mp3",
-            tests: [
-                { question: "Какой артикль у слова 'Hund'?", answers: ["der", "die", "das"], correct: 0 },
-                { question: "лол'?", answers: ["der", "die", "das"], correct: 2 }
-            ]
-        },
-        23: {
-            title: "День 6: Приветствие",
-            vocabulary: ["привет"],
-            grammar: "Глагол '12312321': ich bin, du bist, er/sie/es ist...",
-            audio: "audio/day1.mp3",
-            tests: [
-                { question: "Какой артикль у слова 'Hund'?", answers: ["der", "die", "das"], correct: 0 },
-                { question: "лол'?", answers: ["der", "die", "das"], correct: 2 }
-            ]
-        },
-        24: {
-            title: "День 6: Приветствие",
-            vocabulary: ["привет"],
-            grammar: "Глагол '12312321': ich bin, du bist, er/sie/es ist...",
-            audio: "audio/day1.mp3",
-            tests: [
-                { question: "Какой артикль у слова 'Hund'?", answers: ["der", "die", "das"], correct: 0 },
-                { question: "лол'?", answers: ["der", "die", "das"], correct: 2 }
-            ]
-        },
-        25: {
-            title: "День 6: Приветствие",
-            vocabulary: ["привет"],
-            grammar: "Глагол '12312321': ich bin, du bist, er/sie/es ist...",
-            audio: "audio/day1.mp3",
-            tests: [
-                { question: "Какой артикль у слова 'Hund'?", answers: ["der", "die", "das"], correct: 0 },
-                { question: "лол'?", answers: ["der", "die", "das"], correct: 2 }
-            ]
-        },
-        26: {
-            title: "День 6: Приветствие",
-            vocabulary: ["привет"],
-            grammar: "Глагол '12312321': ich bin, du bist, er/sie/es ist...",
-            audio: "audio/day1.mp3",
-            tests: [
-                { question: "Какой артикль у слова 'Hund'?", answers: ["der", "die", "das"], correct: 0 },
-                { question: "лол'?", answers: ["der", "die", "das"], correct: 2 }
-            ]
-        },
-        25: {
-            title: "День 6: Приветствие",
-            vocabulary: ["привет"],
-            grammar: "Глагол '12312321': ich bin, du bist, er/sie/es ist...",
-            audio: "audio/day1.mp3",
-            tests: [
-                { question: "Какой артикль у слова 'Hund'?", answers: ["der", "die", "das"], correct: 0 },
-                { question: "лол'?", answers: ["der", "die", "das"], correct: 2 }
-            ]
-        },
-        26: {
-            title: "День 6: Приветствие",
-            vocabulary: ["привет"],
-            grammar: "Глагол '12312321': ich bin, du bist, er/sie/es ist...",
-            audio: "audio/day1.mp3",
-            tests: [
-                { question: "Какой артикль у слова 'Hund'?", answers: ["der", "die", "das"], correct: 0 },
-                { question: "лол'?", answers: ["der", "die", "das"], correct: 2 }
-            ]
-        },
-        27: {
-            title: "День 6: Приветствие",
-            vocabulary: ["привет"],
-            grammar: "Глагол '12312321': ich bin, du bist, er/sie/es ist...",
-            audio: "audio/day1.mp3",
-            tests: [
-                { question: "Какой артикль у слова 'Hund'?", answers: ["der", "die", "das"], correct: 0 },
-                { question: "лол'?", answers: ["der", "die", "das"], correct: 2 }
-            ]
-        },
-        28: {
-            title: "День 6: Приветствие",
-            vocabulary: ["привет"],
-            grammar: "Глагол '12312321': ich bin, du bist, er/sie/es ist...",
-            audio: "audio/day1.mp3",
-            tests: [
-                { question: "Какой артикль у слова 'Hund'?", answers: ["der", "die", "das"], correct: 0 },
-                { question: "лол'?", answers: ["der", "die", "das"], correct: 2 }
-            ]
-        },
-        29: {
-            title: "День 6: Приветствие",
-            vocabulary: ["привет"],
-            grammar: "Глагол '12312321': ich bin, du bist, er/sie/es ist...",
-            audio: "audio/day1.mp3",
-            tests: [
-                { question: "Какой артикль у слова 'Hund'?", answers: ["der", "die", "das"], correct: 0 },
-                { question: "лол'?", answers: ["der", "die", "das"], correct: 2 }
-            ]
-        },
-        30: {
-            title: "День 30: Приветствие",
-            vocabulary: ["слова"],
-            grammar: "грамматика",
-            audio: "audio/day30.mp3",
-            longAnswer: "Напишите мотивационное письмо в вуз на немецком языке. Объем 300 слов."
+          ]
         }
-    };
+      },
+    en: {
+      1: {
+        vocabulary: "Vocabulary: university, application\nGrammar: verb to be",
+        tests: [
+          {
+            question: "Choose the correct word: ___ university",
+            options: ["a", "an", "the"],
+            answer: "a"
+          }
+        ]
+      }
+    },
+    fr: {
+      1: {
+        vocabulary: "Lexique : université, candidature\nGrammaire : le verbe être",
+        tests: [
+          {
+            question: "Choisissez l’article correct : ___ université",
+            options: ["le", "la", "les"],
+            answer: "l’"
+          }
+        ]
+      }
+    }
+  };
+  
 
-    const dayData = data[day];
+  const dayData = data[lang]?.[day];
 
     if (dayData) {
         if (page === "theory") {
