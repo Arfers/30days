@@ -2,14 +2,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const params = new URLSearchParams(window.location.search);
     const day = params.get("day") || 1;
     const page = window.location.pathname.includes("tasks") ? "tasks" : "theory";
-    const globalParams = new URLSearchParams(window.location.search);
-    const lang = globalParams.get("lang") || "de";
-    const backLink = document.getElementById("back-link");
-if (backLink) {
-    backLink.href = `calendar.html?lang=${lang}`;
-}
-
-
 
     const data = {
         1: {
@@ -351,7 +343,7 @@ if (backLink) {
             document.getElementById("vocabulary").innerHTML = dayData.vocabulary?.map(word => `<li>${word}</li>`).join("") || "";
             document.getElementById("grammar").textContent = dayData.grammar || "";
             document.getElementById("audio").src = dayData.audio || "";
-            document.getElementById("task-link").href = `tasks.html?day=${day}&lang=${lang}`;
+            document.getElementById("task-link").href = `tasks.html?day=${day}`;
         } else if (page === "tasks") {
             document.getElementById("task-title").textContent = dayData.title;
 
@@ -386,7 +378,6 @@ function updateCalendar() {
             }
         }
     }
-}
     
 
 function showTests(testArray, day) {
@@ -487,4 +478,4 @@ document.addEventListener("DOMContentLoaded", () => {
     if (localStorage.getItem("theme") === "dark") {
         document.body.classList.add("dark-theme");
     }
-});
+

@@ -12,14 +12,29 @@
         <h1>📅 Выбери день челленджа</h1>
         <a href="index.html" class="back-btn">🔙 На главную</a>
     </header>
+
     <main>
-        <div class="calendar">
-            <script>
-                for (let i = 1; i <= 30; i++) {
-                    document.write(`<a href="day.html?day=${i}" class="day-card" id="day-${i}" onclick="checkDay(${i}); return false;">День ${i}</a>`);
-                }
-            </script>
-        </div>        
+        <div class="calendar" id="calendar"></div>
     </main>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const lang = params.get("lang") || "de";
+
+        const calendarContainer = document.getElementById("calendar");
+
+        for (let i = 1; i <= 30; i++) {
+            const link = document.createElement("a");
+            link.href = `day.html?day=${i}&lang=${lang}`;
+            link.className = "day-card";
+            link.id = `day-${i}`;
+            link.textContent = `День ${i}`;
+            link.onclick = function () {
+                checkDay(i);
+                return false;
+            };
+            calendarContainer.appendChild(link);
+        }
+    </script>
 </body>
 </html>
