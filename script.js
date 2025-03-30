@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     
     const data =  {
-    de: {
+    de: { //дойч
         1: {
           title: "День 1. Приветствие и базовая учебная лексика",
           vocabulary: ["Hallo — привет", "Guten Morgen — доброе утро", "Guten Tag — добрый день", "Guten Abend — добрый вечер", "Tschüss — пока", "Danke — спасибо", "Bitte — пожалуйста", "Das Buch — книга", "Die Lehrerin — преподавательница", "Der Lehrer — преподаватель"],
@@ -758,29 +758,303 @@ document.addEventListener("DOMContentLoaded", () => {
             longAnswer: "как"
           }
       },
-    en: {
+    en: { // англ
       1: {
-        vocabulary: "Vocabulary: university, applicationGrammar: verb to be",
+        title: "День 1. Приветствия и базовая лексика",
+        vocabulary: [
+          "Hello — привет",
+          "Hi — привет (неформально)",
+          "Good morning — доброе утро",
+          "Good afternoon — добрый день",
+          "Good evening — добрый вечер",
+          "Goodbye — до свидания",
+          "Please — пожалуйста",
+          "Thank you — спасибо",
+          "The book — книга",
+          "The teacher — преподаватель"
+        ],
+        audio: "audio/day1_en.mp3",
+        example: [
+          "“Good morning, I am a student.” — Доброе утро, я студент.",
+          "“The teacher has a book.” — У преподавателя есть книга."
+        ],
+        grammar: [
+          "Артикль the — универсальный определённый артикль",
+          "Глагол to be: I am, you are, he/she is"
+        ],
         tests: [
-          {
-            question: "Choose the correct word: ___ university",
-            options: ["a", "an", "the"],
-            answer: "a"
-          }
+          { question: "What does 'Thank you' mean?", answers: ["Пожалуйста", "Спасибо", "Привет"], correct: 1 },
+          { question: "Complete: I ___ a student.", answers: ["is", "are", "am"], correct: 2 },
+          { question: "Which one is a greeting?", answers: ["Please", "Goodbye", "Hi"], correct: 2 }
         ]
-      }
+      },
+      2: {
+        title: "День 2. В университете",
+        vocabulary: [
+          "The university — университет",
+          "The notebook — тетрадь",
+          "The pen — ручка",
+          "The table — стол",
+          "The student — студент",
+          "The classroom — аудитория",
+          "The course — курс",
+          "The chair — стул",
+          "The lesson — урок",
+          "The professor — профессор"
+        ],
+        audio: "audio/day2_en.mp3",
+        example: [
+          "“I have a notebook and a pen.” — У меня есть тетрадь и ручка.",
+          "“The student is in the classroom.” — Студент находится в аудитории."
+        ],
+        grammar: [
+          "Глагол to have: I have, he/she has",
+          "Единственное и множественное число: a student — students"
+        ],
+        tests: [
+          { question: "What does 'notebook' mean?", answers: ["Ручка", "Книга", "Тетрадь"], correct: 2 },
+          { question: "Complete: She ___ a course today.", answers: ["have", "has", "is"], correct: 1 },
+          { question: "What is the plural of 'student'?", answers: ["students", "studentes", "studants"], correct: 0 }
+        ]
+      },
+      3: {
+        title: "День 3. Действия на занятии",
+        vocabulary: [
+          "To read — читать",
+          "To write — писать",
+          "To listen — слушать",
+          "To speak — говорить",
+          "To study — учиться",
+          "The sentence — предложение",
+          "The question — вопрос",
+          "The answer — ответ",
+          "The board — доска",
+          "The group — группа"
+        ],
+        audio: "audio/day3_en.mp3",
+        example: [
+          "“We write sentences on the board.” — Мы пишем предложения на доске.",
+          "“The students listen to the teacher.” — Студенты слушают преподавателя."
+        ],
+        grammar: [
+          "Глаголы в настоящем времени: I read, he reads",
+          "Добавление -s в 3 лице: he reads, she writes"
+        ],
+        tests: [
+          { question: "What does 'to study' mean?", answers: ["писать", "учиться", "говорить"], correct: 1 },
+          { question: "Complete: He ___ to the teacher.", answers: ["listen", "listens", "listened"], correct: 1 },
+          { question: "Which word means 'предложение'?", answers: ["sentence", "question", "group"], correct: 0 }
+        ]
+      }, 
+      4: {
+        title: "День 4. Люди в университете",
+        vocabulary: [
+          "The teacher — преподаватель",
+          "The student — студент",
+          "The classmate — одногруппник",
+          "The assistant — ассистент",
+          "The director — директор",
+          "The secretary — секретарь",
+          "The librarian — библиотекарь",
+          "The group — группа",
+          "The class — класс / занятие",
+          "The department — факультет / отдел"
+        ],
+        audio: "audio/day4_en.mp3",
+        example: [
+          "“The teacher talks to the assistant.” — Преподаватель говорит с ассистентом.",
+          "“The librarian works in the library.” — Библиотекарь работает в библиотеке."
+        ],
+        grammar: [
+          "Артикль the для всех существительных",
+          "Употребление глаголов work, talk в настоящем времени"
+        ],
+        tests: [
+          { question: "Who works in the library?", answers: ["The teacher", "The secretary", "The librarian"], correct: 2 },
+          { question: "What does 'classmate' mean?", answers: ["Преподаватель", "Одногруппник", "Ассистент"], correct: 1 },
+          { question: "Complete: The director ___ in the department.", answers: ["work", "works", "working"], correct: 1 }
+        ]
+      },      
+      5: {
+        title: "День 5. Расписание и дни недели",
+        vocabulary: [
+          "Monday — понедельник",
+          "Tuesday — вторник",
+          "Wednesday — среда",
+          "Thursday — четверг",
+          "Friday — пятница",
+          "Lesson — урок",
+          "Class — занятие",
+          "Schedule — расписание",
+          "Morning — утро",
+          "Afternoon — день"
+        ],
+        audio: "audio/day5_en.mp3",
+        example: [
+          "“I have a lesson on Monday morning.” — У меня урок в понедельник утром.",
+          "“The class starts at nine o’clock.” — Занятие начинается в девять."
+        ],
+        grammar: [
+          "Предлоги времени: on Monday, at nine o’clock",
+          "Порядок слов в предложениях с временем"
+        ],
+        tests: [
+          { question: "What does 'schedule' mean?", answers: ["расписание", "урок", "время"], correct: 0 },
+          { question: "Complete: The class starts ___ nine o’clock.", answers: ["in", "at", "on"], correct: 1 },
+          { question: "Which day comes after Tuesday?", answers: ["Monday", "Wednesday", "Friday"], correct: 1 }
+        ]
+      }              
     },
-    fr: {
+    fr: { //франц
       1: {
-        vocabulary: "Lexique : université, candidature\nGrammaire : le verbe être",
+        title: "День 1. Приветствия и базовые слова",
+        vocabulary: [
+          "Bonjour — здравствуйте / добрый день",
+          "Bonsoir — добрый вечер",
+          "Salut — привет",
+          "Merci — спасибо",
+          "S’il vous plaît — пожалуйста",
+          "Au revoir — до свидания",
+          "Le livre — книга",
+          "Le professeur — преподаватель",
+          "L’étudiant — студент",
+          "La salle — аудитория / класс"
+        ],
+        audio: "audio/day1_fr.mp3",
+        example: [
+          "« Bonjour, je suis étudiant. » — Здравствуйте, я студент.",
+          "« Le professeur est dans la salle. » — Преподаватель в аудитории."
+        ],
+        grammar: [
+          "Артикли: le (муж. род), la (жен. род), l’ (перед гласной), les (множественное число)",
+          "Глагол être (быть) в 1 лице ед. числа: je suis"
+        ],
         tests: [
-          {
-            question: "Choisissez l’article correct : ___ université",
-            options: ["le", "la", "les"],
-            answer: "l’"
-          }
+          { question: "Que veut dire « Bonjour » ?", answers: ["До свидания", "Добрый день", "Пожалуйста"], correct: 1 },
+          { question: "Quel article convient : ___ professeur", answers: ["La", "L’", "Le"], correct: 2 },
+          { question: "Complétez : Je ___ étudiant.", answers: ["es", "suis", "est"], correct: 1 }
+        ],
+        fill: [
+          { sentence: "Le ___ est sur la table.", answer: "livre" },
+          { sentence: "Je suis dans la ___.", answer: "salle" }
         ]
-      }
+      },
+      2: {
+        title: "День 2. В университете",
+        vocabulary: [
+          "L’université — университет",
+          "Le cahier — тетрадь",
+          "Le stylo — ручка",
+          "La table — стол",
+          "L’étudiant — студент",
+          "L’étudiante — студентка",
+          "La classe — класс, аудитория",
+          "Le cours — курс",
+          "La chaise — стул",
+          "Le professeur — преподаватель"
+        ],
+        audio: "audio/day2_fr.mp3",
+        example: [
+          "« J’ai un cours de français aujourd’hui. » — У меня сегодня урок французского.",
+          "« L’étudiante a un cahier et un stylo. » — У студентки есть тетрадь и ручка."
+        ],
+        grammar: [
+          "Глагол avoir (иметь), 1 и 3 лицо ед. числа: j’ai, il/elle a",
+          "Простое множественное число: le cahier — les cahiers"
+        ],
+        tests: [
+          { question: "Que veut dire « Le stylo » ?", answers: ["Карандаш", "Ручка", "Книга"], correct: 1 },
+          { question: "Complétez : J’___ un cahier.", answers: ["ai", "es", "suis"], correct: 0 },
+          { question: "Quel mot est au pluriel ?", answers: ["la chaise", "le cahier", "les étudiants"], correct: 2 }
+        ]
+      },    
+      3:  {
+        title: "День 3. Действия в аудитории",
+        vocabulary: [
+          "Lire — читать",
+          "Écrire — писать",
+          "Écouter — слушать",
+          "Parler — говорить",
+          "Étudier — учиться",
+          "Le livre — книга",
+          "La phrase — фраза",
+          "La question — вопрос",
+          "La réponse — ответ",
+          "Le tableau — доска"
+        ],
+        audio: "audio/day3_fr.mp3",
+        example: [
+          "« J’écris une phrase au tableau. » — Я пишу фразу на доске.",
+          "« Les étudiants écoutent le professeur. » — Студенты слушают преподавателя."
+        ],
+        grammar: [
+          "Глаголы 1-й группы в настоящем времени: j’écoute, tu écoutes, il/elle écoute",
+          "Порядок слов: подлежащее + глагол + дополнение"
+        ],
+        tests: [
+          { question: "Que veut dire « Écrire » ?", answers: ["Говорить", "Писать", "Слушать"], correct: 1 },
+          { question: "Complétez : Nous ___ une question.", answers: ["écoute", "écoutons", "écoutez"], correct: 1 },
+          { question: "Quel mot est féminin ?", answers: ["le livre", "le tableau", "la phrase"], correct: 2 }
+        ]
+      },      
+      4: {
+        title: "День 4. Люди в университете",
+        vocabulary: [
+          "Le professeur — преподаватель",
+          "L’étudiant — студент",
+          "L’étudiante — студентка",
+          "Le directeur — директор",
+          "La secrétaire — секретарь",
+          "Le camarade de classe — однокурсник",
+          "Le bibliothécaire — библиотекарь (м.)",
+          "La bibliothécaire — библиотекарь (ж.)",
+          "L’assistant — ассистент",
+          "La classe — класс, группа"
+        ],
+        audio: "audio/day4_fr.mp3",
+        example: [
+          "« Le directeur parle avec la secrétaire. » — Директор разговаривает с секретарём.",
+          "« L’assistant aide le professeur. » — Ассистент помогает преподавателю."
+        ],
+        grammar: [
+          "Род имён существительных и соответствующие артикли",
+          "Согласование прилагательного с существительным (вводное, без тренировки)"
+        ],
+        tests: [
+          { question: "Quel mot est féminin ?", answers: ["le professeur", "la secrétaire", "l’étudiant"], correct: 1 },
+          { question: "Que fait l’assistant ?", answers: ["Aide", "Écrit", "Écoute"], correct: 0 },
+          { question: "Complétez : Le professeur est dans la ___.", answers: ["classe", "secrétaire", "bibliothécaire"], correct: 0 }
+        ]
+      },
+      5: {
+        title: "День 5. Расписание, дни недели и время",
+        vocabulary: [
+          "Lundi — понедельник",
+          "Mardi — вторник",
+          "Mercredi — среда",
+          "Jeudi — четверг",
+          "Vendredi — пятница",
+          "Le cours — курс",
+          "L’heure — час",
+          "Le jour — день",
+          "Le matin — утро",
+          "L’après-midi — день (после полудня)"
+        ],
+        audio: "audio/day5_fr.mp3",
+        example: [
+          "« Le cours commence à neuf heures. » — Курс начинается в девять часов.",
+          "« J’ai cours le lundi matin. » — У меня занятия по понедельникам утром."
+        ],
+        grammar: [
+          "Выражение времени: à + heure (à neuf heures)",
+          "Определённые дни недели: le lundi = каждый понедельник"
+        ],
+        tests: [
+          { question: "Que veut dire « Lundi » ?", answers: ["Среда", "Понедельник", "Четверг"], correct: 1 },
+          { question: "Complétez : Le cours commence ___ neuf heures.", answers: ["à", "de", "le"], correct: 0 },
+          { question: "Quel mot désigne la période après 12h ?", answers: ["le matin", "l’après-midi", "le soir"], correct: 1 }
+        ]
+      }      
     }
   };
   
