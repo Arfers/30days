@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Задания</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="img/debilingo.png" type="image/png">
     <script defer src="script.js"></script>
 </head>
 <body>
     <header>
         <h1 id="task-title"></h1>
-        <a id="back-link" class="back-btn" href="#">Назад</a>
+        <a id="back-to-calendar" class="back-btn">🔙 Назад</a>
     </header>
     <main>
         <section id="test-section" style="display: none;">
@@ -21,21 +22,26 @@
 
         <section id="fill-gap-section" style="display: none;">
             <h2>✍ Вставьте слово</h2>
-            <p id="gap-sentence"></p>
-            <input type="text" id="user-answer" placeholder="Введите ответ">
-            <button onclick="checkGapAnswer()">Проверить</button>
+            <div id="gap-container"></div>
             <p id="gap-result"></p>
-        </section>
+          </section>
+        
+          <section id="listening-section" style="display: none;">
+            <h2>🎧 Аудирование</h2>
+            <audio id="listening-audio" controls></audio>
+            <div id="listening-tests"></div>
+            <p id="listening-result"></p>
+          </section>          
 
         <section id="long-answer-section" style="display: none;">
-            <h2>📜 Развернутое задание</h2>
+            <h2>📜 Развернутый ответ</h2>
             <p id="long-question"></p>
             <textarea id="long-answer" placeholder="Напишите ответ здесь"></textarea>
             <button onclick="saveLongAnswer()">Сохранить</button>
             <p id="long-result"></p>
         </section>
 
-        <button id="complete-btn" onclick="markCompleted()">✅ Выполнено</button>
+        <button id="completeBtn">✅ Завершить день</button>
     </main>
 </body>
 </html>

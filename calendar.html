@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Календарь заданий</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="img/debilingo.png" type="image/png">
     <script defer src="script.js"></script>
 </head>
 <body>
@@ -21,20 +22,25 @@
         const params = new URLSearchParams(window.location.search);
         const lang = params.get("lang") || "de";
 
-        const calendarContainer = document.getElementById("calendar");
+    const calendarContainer = document.getElementById("calendar");
 
-        for (let i = 1; i <= 30; i++) {
-            const link = document.createElement("a");
-            link.href = `day.html?day=${i}&lang=${lang}`;
-            link.className = "day-card";
-            link.id = `day-${i}`;
-            link.textContent = `День ${i}`;
-            link.onclick = function () {
-                checkDay(i);
-                return false;
-            };
-            calendarContainer.appendChild(link);
-        }
+    for (let i = 1; i <= 30; i++) {
+        const link = document.createElement("a");
+        link.href = `day.html?day=${i}&lang=${lang}`;
+        link.className = "day-card";
+        link.id = `day-${i}`;
+        link.textContent = `День ${i}`;
+        link.onclick = function () {
+            checkDay(i);
+            return false;
+        };
+        calendarContainer.appendChild(link);
+    }
+    document.addEventListener("DOMContentLoaded", () => {
+        updateCalendar(lang);
+    });
+</script>
+
     </script>
 </body>
 </html>
