@@ -4027,20 +4027,69 @@ document.addEventListener("DOMContentLoaded", () => {
             }
           } else if (page === "tasks") {
             document.getElementById("task-title").textContent = dayData.title || "";
-
-            if (dayData.tests) showTests(dayData.tests);
-            else document.getElementById("test-section").style.display = "none";
-
-            if (dayData.fillGap) showFillGap(dayData.fillGap);
-            else document.getElementById("fill-gap-section").style.display = "none";
-
-            if (dayData.longAnswer) showLongAnswer(dayData.longAnswer);
-            else document.getElementById("long-answer-section").style.display = "none";
-
-            if (dayData.listening) showListening(dayData.listening);
-            else document.getElementById("listening-section").style.display = "none";
+        
+            if (dayData.tests) {
+                showTests(dayData.tests);
+            } else {
+                document.getElementById("test-section").style.display = "none";
+            }
+        
+            if (dayData.fillGap) {
+                showFillGap(dayData.fillGap);
+            } else {
+                document.getElementById("fill-gap-section").style.display = "none";
+            }
+        
+            if (dayData.longAnswer) {
+                showLongAnswer(dayData.longAnswer);
+            } else {
+                document.getElementById("long-answer-section").style.display = "none";
+            }
+        
+            if (dayData.listening) {
+                showListening(dayData.listening);
+            } else {
+                document.getElementById("listening-section").style.display = "none";
+            }
+        
+            // Нейросеть — обработчик кнопки "Проверить развернутый ответ"
+            const saveBtn = document.getElementById("save-long-answer");
+            if (saveBtn) {
+                saveBtn.onclick = async () => {
+                    const textarea = document.getElementById("long-answer");
+                    const resultBlock = document.getElementById("long-result");
+                    const answer = textarea.value.trim();
+        
+                    if (!answer) {
+                        resultBlock.textContent = "Пожалуйста, введите ответ.";
+                        resultBlock.style.color = "red";
+                        return;
+                    }
+        
+                    resultBlock.textContent = "Проверка ответа...";
+                    resultBlock.style.color = "black";
+        
+                    try {
+                        const response = await fetch("https://debilingo-ai.onrender.com/check", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify({ answer })
+                        });
+        
+                        const data = await response.json();
+                        resultBlock.textContent = data.result || "Нет ответа от нейросети.";
+                        resultBlock.style.color = "green";
+                    } catch (error) {
+                        console.error("Ошибка при обращении к нейросети:", error);
+                        resultBlock.textContent = "Ошибка при проверке ответа.";
+                        resultBlock.style.color = "red";
+                    }
+                };
+            }
         }
-    }
+        
 
 
     if (window.location.pathname.includes("calendar.html")) {
@@ -4058,7 +4107,8 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.setItem("theme", document.body.classList.contains("dark-theme") ? "dark" : "light");
         });
     }
-});
+  }});
+
 
 function updateCalendar(lang) {
     for (let i = 1; i <= 30; i++) {
@@ -4208,3 +4258,35 @@ function showListening(data) {
   };
   container.appendChild(btn);
 }
+const saveLongAnswer = async () => {
+  const textarea = document.getElementById("long-answer");
+  const resultBlock = document.getElementById("long-result");
+  const answer = textarea.value.trim();
+
+  if (!answer) {
+    resultBlock.textContent = "Пожалуйста, введите ответ.";
+    resultBlock.style.color = "red";
+    return;
+  }
+
+  resultBlock.textContent = "Проверка ответа...";
+  resultBlock.style.color = "black";
+
+  try {
+    const response = await fetch("https://debilingo-ai.onrender.com/check", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ answer })
+    });
+
+    const data = await response.json();
+    resultBlock.textContent = data.result || "Нет ответа от нейросети.";
+    resultBlock.style.color = "green";
+  } catch (error) {
+    console.error("Ошибка при проверке:", error);
+    resultBlock.textContent = "Ошибка при проверке.";
+    resultBlock.style.color = "red";
+  }
+};
