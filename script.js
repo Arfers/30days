@@ -4061,7 +4061,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     const answer = textarea.value.trim();
         
                     if (!answer) {
-                        resultBlock.textContent = "Пожалуйста, введите ответ.";
+                        resultBlock.textContent = "Сначала введите ответ.";
                         resultBlock.style.color = "red";
                         return;
                     }
@@ -4071,7 +4071,7 @@ document.addEventListener("DOMContentLoaded", () => {
                       return;
                     }
         
-                    resultBlock.textContent = "Не обновляйте страницу - идет проверка ответа...";
+                    resultBlock.textContent = "Проверка ответа... Пожалуйста, не обновляйте страницу";
                     resultBlock.style.color = "black";
         
                     try {
@@ -4084,7 +4084,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         });
         
                         const data = await response.json();
-                        resultBlock.textContent = data.result || "Нет ответа от нейросети.";
+                        resultBlock.innerHTML = data.result || "ChatGPT-4o mini не отвечает. Попробуйте позже";
                         resultBlock.style.color = "green";
                     } catch (error) {
                         console.error("Ошибка при обращении к нейросети:", error);
