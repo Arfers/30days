@@ -4065,8 +4065,13 @@ document.addEventListener("DOMContentLoaded", () => {
                         resultBlock.style.color = "red";
                         return;
                     }
+                    if (answer.length > 1000) {
+                      resultBlock.textContent = "Ответ слишком длинный. Максимум 1000 символов.";
+                      resultBlock.style.color = "red";
+                      return;
+                    }
         
-                    resultBlock.textContent = "Проверка ответа...";
+                    resultBlock.textContent = "Не обновляйте страницу - идет проверка ответа...";
                     resultBlock.style.color = "black";
         
                     try {
